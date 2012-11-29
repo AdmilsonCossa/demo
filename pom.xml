@@ -15,5 +15,7 @@
 		<module>demo-struts</module>
 		<module>demo-simplexml</module>
 		<module>demo-activiti</module>
+		<module>demo-junit</module>
+		<module>demo-jbpm</module>
 	</modules>	
 </project>
