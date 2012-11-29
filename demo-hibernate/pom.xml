@@ -8,12 +8,5 @@
 	<version>1.0.0</version>
 	<name>Hibernate Demo</name>
 	<description>Keep Demo - Hibernate</description>
-	<dependencies>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate</artifactId>
-			<version>3.2.6.ga</version>
-		</dependency>
-	</dependencies>
 
 </project>
