@@ -4,6 +4,9 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -37,7 +40,23 @@ public class UserDetail extends AbstractEntity {
 	@Temporal(TemporalType.DATE)        
     @Column(name="birth_date")        
 	private Date birthDate;
-
+	
+	/**
+	 * 电话
+	 */
+	@Column(name="phone")  
+	private String phone;
+	
+	/**
+	 * 备注
+	 */
+	@Column(name="remark")  
+	private String remark;
+	
+	@OneToOne
+	@JoinColumn(name = "login_user_id", insertable = true, unique = true)
+	private LoginUser loginUser;
+	
 	public String getName() {
 		return name;
 	}
@@ -60,6 +79,30 @@ public class UserDetail extends AbstractEntity {
 
 	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getRemark() {
+		return remark;
+	}
+
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
+
+	public LoginUser getLoginUser() {
+		return loginUser;
+	}
+
+	public void setLoginUser(LoginUser loginUser) {
+		this.loginUser = loginUser;
 	}
 
 }
