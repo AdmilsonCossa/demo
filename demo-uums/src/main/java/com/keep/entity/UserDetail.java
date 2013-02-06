@@ -2,9 +2,9 @@ package com.keep.entity;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -21,6 +21,8 @@ import com.keep.framework.entity.AbstractEntity;
 @Entity
 @Table(name = "USER_DETAIL", uniqueConstraints = { @UniqueConstraint(columnNames = { "name" }) })
 public class UserDetail extends AbstractEntity {
+
+	private static final long serialVersionUID = -6541031267422490674L;
 
 	/**
 	 * 名字
@@ -53,8 +55,11 @@ public class UserDetail extends AbstractEntity {
 	@Column(name="remark")  
 	private String remark;
 	
-	@OneToOne
-	@JoinColumn(name = "login_user_id", insertable = true, unique = true)
+    /**
+     * 用户登陆帐号
+     */
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "login_user_id")
 	private LoginUser loginUser;
 	
 	public String getName() {

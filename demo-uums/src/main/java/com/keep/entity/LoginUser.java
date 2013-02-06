@@ -2,8 +2,6 @@ package com.keep.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
@@ -12,27 +10,32 @@ import com.keep.framework.entity.AbstractEntity;
 
 /**
  * @author 张朝峥
- *
+ * 
  */
 @Entity
 @Table(name = "LOGIN_USER", uniqueConstraints = { @UniqueConstraint(columnNames = { "account" }) })
 public class LoginUser extends AbstractEntity {
-	
+
+	private static final long serialVersionUID = 2728482026765313730L;
+
 	/**
 	 * 帐号
 	 */
-	@Column(name="account")  
+	@Column(name = "account")
 	private String account;
-	
+
 	/**
 	 * 密码
 	 */
-	@Column(name="account")
+	@Column(name = "password")
 	private String password;
-	
-	@OneToOne(mappedBy="userDetail",fetch=FetchType.EAGER) 
+
+	/**
+	 * 用户详细信息
+	 */
+	@OneToOne(mappedBy = "loginUser")
 	private UserDetail userDetail;
-	
+
 	public String getAccount() {
 		return account;
 	}
@@ -56,5 +59,5 @@ public class LoginUser extends AbstractEntity {
 	public void setUserDetail(UserDetail userDetail) {
 		this.userDetail = userDetail;
 	}
-	
+
 }
