@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.keep</groupId>
-    <artifactId>uums</artifactId>
+    <artifactId>demo-uums</artifactId>
     <packaging>war</packaging>
     <version>0.1.0.BUILD-SNAPSHOT</version>
     <name>uums</name>
@@ -10,7 +10,7 @@
         <java.version>6</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring.version>3.2.0.RELEASE</spring.version>
-        <roo.version>1.2.3.BUILD-SNAPSHOT</roo.version>
+        <roo.version>1.2.3.RELEASE</roo.version>
         <hibernate.version>4.1.8.Final</hibernate.version>
         <jetty.version>6.1.24</jetty.version>
         <h2.version>1.1.116</h2.version>
@@ -78,7 +78,16 @@
             <artifactId>jta</artifactId>
             <version>1.1</version>
         </dependency>
-		
+        <dependency>
+	        <groupId>org.codehaus.jackson</groupId>
+	        <artifactId>jackson-mapper-asl</artifactId>
+	        <version>1.7.1</version>
+   		</dependency>     
+		<dependency>
+      		<groupId>rome</groupId>
+      		<artifactId>rome</artifactId>
+      		<version>1.0</version>
+    	</dependency> 		   		
 		<!-- spring -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -109,6 +118,11 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-oxm</artifactId>
             <version>${spring.version}</version>
         </dependency>
 		<dependency>
