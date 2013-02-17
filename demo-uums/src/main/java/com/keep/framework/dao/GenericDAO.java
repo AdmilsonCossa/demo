@@ -4,29 +4,34 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 /**
  * @author 张朝峥
- *
- * @param <E>	实体
- * @param <K>	主键
  */
-public interface GenericDAO<E, K extends Serializable> {
+@Repository
+public interface GenericDAO {
 
-	K save(E entity);
+	Serializable save(Object entity);
 
-	void saveOrUpdate(E entity);
+	void saveOrUpdate(Object entity);
 
-	void saveOrUpdateAll(Collection<E> entities);
+	@SuppressWarnings("rawtypes")
+	void saveOrUpdateAll(Collection entities);
+	
+	@SuppressWarnings("rawtypes")
+	Object get(Class entityClass, Serializable key);
+	
+	@SuppressWarnings("rawtypes")
+	Object load(Class entityClass, Serializable key);
+	
+	@SuppressWarnings("rawtypes")
+	List loadAll(Class entityClass);
 
-	E get(K key);
+	void update(Object entity);
 
-	E load(K key);
-
-	List<E> loadAll();
-
-	void update(E entity);
-
-	void delete(E entity);
-
-	void deleteAll(Collection<E> entities);
+	void delete(Object entity);
+	
+	@SuppressWarnings("rawtypes")
+	void deleteAll(Collection entities);
 }

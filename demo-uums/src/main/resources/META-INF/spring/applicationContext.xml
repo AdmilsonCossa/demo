@@ -11,8 +11,10 @@
 	
 	<!-- 检查location下*.properties定义的参数,并通过${propertyKey}调用 -->
 	<context:property-placeholder location="classpath*:META-INF/spring/*.properties" />
-	
-	<!-- 使用 annotation 自动注册bean,并检查@Controller, @Service, @Repository注解已被注入 -->
-    <context:component-scan base-package="com.keep.service"/>
+
+	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />  
+
+	<context:annotation-config />
+   
     <import resource="classpath*:META-INF/spring/applicationContext-*.xml" />  
 </beans>

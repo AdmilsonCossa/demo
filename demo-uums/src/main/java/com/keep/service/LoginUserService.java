@@ -3,7 +3,7 @@ package com.keep.service;
 
 import org.springframework.stereotype.Service;
 
-import com.keep.entity.UserDetail;
+import com.keep.entity.LoginUser;
 import com.keep.framework.service.GenericServiceImpl;
 
 /**
@@ -11,6 +11,6 @@ import com.keep.framework.service.GenericServiceImpl;
  *
  */
 @Service
-public class LoginUserService extends GenericServiceImpl<UserDetail, Long>{
+public class LoginUserService extends GenericServiceImpl<LoginUser, Long>{
 
 }

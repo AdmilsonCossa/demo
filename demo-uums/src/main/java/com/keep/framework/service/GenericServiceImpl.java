@@ -2,9 +2,12 @@ package com.keep.framework.service;
 
 
 import java.io.Serializable;
+import java.lang.reflect.ParameterizedType;
 
-import com.keep.framework.dao.GenericDAOImpl;
-import com.keep.framework.service.GenericService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.keep.framework.dao.GenericDAO;
 
 /**
  * @author 张朝峥
@@ -12,31 +15,39 @@ import com.keep.framework.service.GenericService;
  * @param <E>	实体	
  * @param <K>	主键
  */
-public class GenericServiceImpl<E, K extends Serializable> implements GenericService<E, K>{
+@Service
+public abstract class GenericServiceImpl<E, K extends Serializable> implements GenericService<E, K>{
 	
-	private GenericDAOImpl<E, K> dao;
+	private Class<E> entityClass = null;
+	
+	@Autowired
+	private GenericDAO genericDAO;
 
+	public GenericServiceImpl() {
+		this.entityClass = (Class<E>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+	}
+	
 	@Override
 	public K save(E entity) {
-		return dao.save(entity);
+		return (K) genericDAO.save(entity);
 	}
 
 	@Override
 	public E get(K key) {
-		return dao.get(key);
+		return (E) genericDAO.get(entityClass, key);
 	}
 
 	@Override
 	public void delete(E entity) {
-		dao.delete(entity);
+		genericDAO.delete(entity);
 	}
 
 	@Override
 	public void update(E entity) {
-		dao.update(entity);
+		genericDAO.update(entity);
 	}
 
-	public void setDao(GenericDAOImpl<E, K> dao) {
-		this.dao = dao;
+	public void setGenericDAO(GenericDAO genericDAO) {
+		this.genericDAO = genericDAO;
 	}
 }

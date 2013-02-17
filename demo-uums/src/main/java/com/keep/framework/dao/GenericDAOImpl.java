@@ -5,7 +5,10 @@ import java.lang.reflect.ParameterizedType;
 import java.util.Collection;
 import java.util.List;
 
-import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.orm.hibernate3.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -16,58 +19,80 @@ import org.springframework.stereotype.Repository;
  */
 @SuppressWarnings("unchecked")
 @Repository
-public class GenericDAOImpl<E, K extends Serializable> extends
-		HibernateDaoSupport implements GenericDAO<E, K> {
+public class GenericDAOImpl implements GenericDAO {
 	
-	private Class<E> entityClass = null;
+	@Autowired
+	private HibernateTemplate hibernateTemplate;
+	
+	@Autowired
+	private JdbcTemplate jdbcTemplate;
 
-	public GenericDAOImpl() {
-		this.entityClass = (Class<E>) ((ParameterizedType) getClass()
-				.getGenericSuperclass()).getActualTypeArguments()[0];
+	@Override
+	public Serializable save(Object entity) {
+		return getHibernateTemplate().save(entity);
 	}
 
 	@Override
-	public K save(E entity) {
-		return (K) super.getHibernateTemplate().save(entity);
+	public void saveOrUpdate(Object entity) {
+		getHibernateTemplate().saveOrUpdate(entity);
+		
+	}
+
+	@SuppressWarnings("rawtypes")
+	@Override
+	public void saveOrUpdateAll(Collection entities) {
+		getHibernateTemplate().saveOrUpdateAll(entities);
+	}
+
+	@SuppressWarnings("rawtypes")
+	@Override
+	public Object get(Class entityClass, Serializable key) {
+		return getHibernateTemplate().get(entityClass, key);
+	}
+
+	@SuppressWarnings("rawtypes")
+	@Override
+	public Object load(Class entityClass, Serializable key) {
+		return getHibernateTemplate().load(entityClass, key);
+	}
+
+	@SuppressWarnings("rawtypes")
+	@Override
+	public List loadAll(Class entityClass) {
+		return getHibernateTemplate().loadAll(entityClass);
 	}
 
 	@Override
-	public void saveOrUpdate(E entity) {
-		super.getHibernateTemplate().saveOrUpdate(entity);
+	public void update(Object entity) {
+		getHibernateTemplate().update(entity);
 	}
 
 	@Override
-	public void saveOrUpdateAll(Collection<E> entities) {
-		super.getHibernateTemplate().saveOrUpdateAll(entities);
+	public void delete(Object entity) {
+		getHibernateTemplate().delete(entity);
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Override
-	public E get(K key) {
-		return super.getHibernateTemplate().get(entityClass, key);
+	public void deleteAll(Collection entities) {
+		getHibernateTemplate().deleteAll(entities);
 	}
 
-	@Override
-	public E load(K key) {
-		return super.getHibernateTemplate().load(entityClass, key);
+	public HibernateTemplate getHibernateTemplate() {
+		return hibernateTemplate;
 	}
 
-	@Override
-	public List<E> loadAll() {
-		return super.getHibernateTemplate().loadAll(entityClass);
+	public void setHibernateTemplate(HibernateTemplate hibernateTemplate) {
+		this.hibernateTemplate = hibernateTemplate;
 	}
 
-	@Override
-	public void update(E entity) {
-		super.getHibernateTemplate().update(entity);
+	public JdbcTemplate getJdbcTemplate() {
+		return jdbcTemplate;
 	}
 
-	@Override
-	public void delete(E entity) {
-		super.getHibernateTemplate().delete(entity);
+	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+		this.jdbcTemplate = jdbcTemplate;
 	}
-
-	@Override
-	public void deleteAll(Collection<E> entities) {
-		super.getHibernateTemplate().deleteAll(entities);
-	}
+	
+	
 }

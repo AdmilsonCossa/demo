@@ -59,7 +59,7 @@ public class UserDetail extends AbstractEntity {
      * 用户登陆帐号
      */
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "login_user_id")
+    @JoinColumn(name = "login_user_id", nullable = true)
 	private LoginUser loginUser;
 	
 	public String getName() {

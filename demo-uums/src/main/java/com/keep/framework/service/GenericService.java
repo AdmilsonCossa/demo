@@ -2,10 +2,13 @@ package com.keep.framework.service;
 
 import java.io.Serializable;
 
+import org.springframework.stereotype.Service;
+
 /**
  * @author 张朝峥 
  *
  */
+@Service
 public interface GenericService<E, K extends Serializable> {
 
 	K save(E entity);
