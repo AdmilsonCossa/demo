@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.keep.entity.LoginUser;
+import com.keep.framework.controller.BaseController;
 import com.keep.service.LoginUserService;
 
 /**
@@ -17,21 +17,10 @@ import com.keep.service.LoginUserService;
  */
 @RequestMapping("/loginUser")
 @Controller
-public class LoginUserController {
+public class LoginUserController extends BaseController {
 
 	@Autowired
 	private LoginUserService loginUserService;
-	
-	@ResponseBody
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public LoginUser get(@PathVariable String id) {
-		LoginUser u = new LoginUser();
-		u.setId(1L);
-		u.setAccount("admin");
-		u.setPassword("abc123");
-		loginUserService.save(u);
-		return u;
-	}
 
 	@ResponseBody
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
@@ -57,6 +46,11 @@ public class LoginUserController {
 
 	public void setLoginUserService(LoginUserService loginUserService) {
 		this.loginUserService = loginUserService;
+	}
+
+	@Override
+	protected LoginUserService getService() {
+		return loginUserService;
 	}
 
 }
