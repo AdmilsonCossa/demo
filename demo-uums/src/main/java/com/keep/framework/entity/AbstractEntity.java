@@ -17,6 +17,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
  *         抽象实体类。
  *         </p>
  */
+@SuppressWarnings("serial")
 @MappedSuperclass
 public class AbstractEntity implements java.io.Serializable {
 
