@@ -3,6 +3,7 @@ package com.keep.framework.service;
 
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
+import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,7 @@ import com.keep.framework.dao.GenericDAO;
  * @param <E>	实体	
  * @param <K>	主键
  */
+@SuppressWarnings("unchecked")
 @Service
 public abstract class GenericServiceImpl<E, K extends Serializable> implements GenericService<E, K>{
 	
@@ -47,11 +49,9 @@ public abstract class GenericServiceImpl<E, K extends Serializable> implements G
 		genericDAO.update(entity);
 	}
 
-	public GenericDAO getGenericDAO() {
-		return genericDAO;
+	@Override
+	public Collection<E> listAll() {
+		return genericDAO.findAll(entityClass);
 	}
 
-	public void setGenericDAO(GenericDAO genericDAO) {
-		this.genericDAO = genericDAO;
-	}
 }

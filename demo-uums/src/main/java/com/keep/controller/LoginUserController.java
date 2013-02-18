@@ -48,6 +48,7 @@ public class LoginUserController extends BaseController {
 		this.loginUserService = loginUserService;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	protected LoginUserService getService() {
 		return loginUserService;

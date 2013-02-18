@@ -18,6 +18,7 @@ public class UserDetailController extends BaseController {
 	@Autowired
 	private UserDetailService userDetailService;
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	protected UserDetailService getService() {
 		return userDetailService;

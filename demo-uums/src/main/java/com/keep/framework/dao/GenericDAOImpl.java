@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -18,6 +19,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Scope("prototype")
 public class GenericDAOImpl implements GenericDAO {
 	
+	private Logger log = Logger.getLogger(GenericDAOImpl.class);
+	
 	private SessionFactory sessionFactory;
 	
 	@Autowired
@@ -27,50 +30,56 @@ public class GenericDAOImpl implements GenericDAO {
 	
 	@Override
 	public Serializable save(Object entity) {
+		
 		return sessionFactory.getCurrentSession().save(entity);
 	}
 
 	@Override
-	public void saveOrUpdate(Object entity) {
-		// TODO Auto-generated method stub
-		
+	public boolean saveOrUpdate(Object entity) {
+		sessionFactory.getCurrentSession().saveOrUpdate(entity);
+		return true;
 	}
 
 	@Override
-	public void saveOrUpdateAll(Collection<?> entities) {
-		// TODO Auto-generated method stub
-		
+	public boolean saveOrUpdateAll(Collection<?> entities) {
+		for (Object entity : entities) {
+			saveOrUpdate(entity);
+		}
+		return true;
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public <E> E get(Class<E> entityClass, Serializable key) {
 		return (E) sessionFactory.getCurrentSession()
-				.createQuery("from " + entityClass + " t where t.id = :id")
+				.createQuery("from " + entityClass.getName() + " t where t.id = :id")
 				.setParameter("id", key).uniqueResult();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public <E> List<E> findAll(Class<E> entityClass) {
-		// TODO Auto-generated method stub
-		return null;
+		return sessionFactory.getCurrentSession()
+				.createQuery("from " + entityClass.getName()).list();
 	}
 
 	@Override
-	public void update(Object entity) {
-		// TODO Auto-generated method stub
-		
+	public boolean update(Object entity) {
+		sessionFactory.getCurrentSession().update(entity);
+		return true;
 	}
 
 	@Override
-	public void delete(Object entity) {
-		// TODO Auto-generated method stub
-		
+	public boolean delete(Object entity) {
+		sessionFactory.getCurrentSession().delete(entity);
+		return true;
 	}
 
 	@Override
-	public void deleteAll(Collection<?> entities) {
-		// TODO Auto-generated method stub
-		
+	public boolean deleteAll(Collection<?> entities) {
+		for (Object entity : entities) {
+			delete(entity);
+		}
+		return true;
 	}
 }

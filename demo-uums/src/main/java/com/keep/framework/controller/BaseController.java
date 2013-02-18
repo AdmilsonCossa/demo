@@ -23,8 +23,9 @@ public abstract class BaseController {
 	/***
 	 * 获得列表
 	 */
+	@SuppressWarnings("rawtypes")
 	@ResponseBody
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "", method = RequestMethod.GET)
 	public List list() {
 		return null;
 	}
@@ -44,7 +45,7 @@ public abstract class BaseController {
 	 * 添加单个对象
 	 */
 	@ResponseBody
-	@RequestMapping(value = "/", method = RequestMethod.POST)
+	@RequestMapping(value = "", method = RequestMethod.POST)
 	public Object post() {
 		return null;
 	}

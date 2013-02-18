@@ -1,6 +1,7 @@
 package com.keep.framework.service;
 
 import java.io.Serializable;
+import java.util.Collection;
 
 import org.springframework.stereotype.Service;
 
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
  * @author 张朝峥 
  *
  */
+
 @Service
 public interface GenericService<E, K extends Serializable> {
 
@@ -19,4 +21,5 @@ public interface GenericService<E, K extends Serializable> {
 
 	void update(E entity);
 
+	Collection<E> listAll();
 }

@@ -14,17 +14,17 @@ public interface GenericDAO {
 
 	Serializable save(Object entity);
 
-	void saveOrUpdate(Object entity);
+	boolean saveOrUpdate(Object entity);
 
-	void saveOrUpdateAll(Collection<?> entities);
+	boolean saveOrUpdateAll(Collection<?> entities);
 	
 	<E> E get(Class<E> entityClass, Serializable key);
 	
 	<E> List<E> findAll(Class<E> entityClass);
 
-	void update(Object entity);
+	boolean update(Object entity);
 
-	void delete(Object entity);
+	boolean delete(Object entity);
 	
-	void deleteAll(Collection<?> entities);
+	boolean deleteAll(Collection<?> entities);
 }
