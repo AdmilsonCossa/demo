@@ -47,6 +47,10 @@ public abstract class GenericServiceImpl<E, K extends Serializable> implements G
 		genericDAO.update(entity);
 	}
 
+	public GenericDAO getGenericDAO() {
+		return genericDAO;
+	}
+
 	public void setGenericDAO(GenericDAO genericDAO) {
 		this.genericDAO = genericDAO;
 	}

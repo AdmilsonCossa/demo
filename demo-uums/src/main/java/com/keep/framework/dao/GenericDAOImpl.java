@@ -4,91 +4,73 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.orm.hibernate3.HibernateTemplate;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author 张朝峥
- *
- * @param <E>	实体
- * @param <K>	主键
  */
-@SuppressWarnings("unchecked")
+@Transactional
 @Repository
+@Scope("prototype")
 public class GenericDAOImpl implements GenericDAO {
 	
-	@Autowired
-	private HibernateTemplate hibernateTemplate;
+	private SessionFactory sessionFactory;
 	
 	@Autowired
-	private JdbcTemplate jdbcTemplate;
-
+	public void setSessionFactoryOverride(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
+	
 	@Override
 	public Serializable save(Object entity) {
-		return getHibernateTemplate().save(entity);
+		return sessionFactory.getCurrentSession().save(entity);
 	}
 
 	@Override
 	public void saveOrUpdate(Object entity) {
-		getHibernateTemplate().saveOrUpdate(entity);
+		// TODO Auto-generated method stub
 		
 	}
 
-	@SuppressWarnings("rawtypes")
 	@Override
-	public void saveOrUpdateAll(Collection entities) {
-		getHibernateTemplate().saveOrUpdateAll(entities);
+	public void saveOrUpdateAll(Collection<?> entities) {
+		// TODO Auto-generated method stub
+		
 	}
 
-	@SuppressWarnings("rawtypes")
+	@SuppressWarnings("unchecked")
 	@Override
-	public Object get(Class entityClass, Serializable key) {
-		return getHibernateTemplate().get(entityClass, key);
+	public <E> E get(Class<E> entityClass, Serializable key) {
+		return (E) sessionFactory.getCurrentSession()
+				.createQuery("from " + entityClass + " t where t.id = :id")
+				.setParameter("id", key).uniqueResult();
 	}
 
-	@SuppressWarnings("rawtypes")
 	@Override
-	public Object load(Class entityClass, Serializable key) {
-		return getHibernateTemplate().load(entityClass, key);
-	}
-
-	@SuppressWarnings("rawtypes")
-	@Override
-	public List loadAll(Class entityClass) {
-		return getHibernateTemplate().loadAll(entityClass);
+	public <E> List<E> findAll(Class<E> entityClass) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public void update(Object entity) {
-		getHibernateTemplate().update(entity);
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
 	public void delete(Object entity) {
-		getHibernateTemplate().delete(entity);
+		// TODO Auto-generated method stub
+		
 	}
 
-	@SuppressWarnings("rawtypes")
 	@Override
-	public void deleteAll(Collection entities) {
-		getHibernateTemplate().deleteAll(entities);
-	}
-
-	public HibernateTemplate getHibernateTemplate() {
-		return hibernateTemplate;
-	}
-
-	public void setHibernateTemplate(HibernateTemplate hibernateTemplate) {
-		this.hibernateTemplate = hibernateTemplate;
-	}
-
-	public JdbcTemplate getJdbcTemplate() {
-		return jdbcTemplate;
-	}
-
-	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
-		this.jdbcTemplate = jdbcTemplate;
+	public void deleteAll(Collection<?> entities) {
+		// TODO Auto-generated method stub
+		
 	}
 }

@@ -16,22 +16,15 @@ public interface GenericDAO {
 
 	void saveOrUpdate(Object entity);
 
-	@SuppressWarnings("rawtypes")
-	void saveOrUpdateAll(Collection entities);
+	void saveOrUpdateAll(Collection<?> entities);
 	
-	@SuppressWarnings("rawtypes")
-	Object get(Class entityClass, Serializable key);
+	<E> E get(Class<E> entityClass, Serializable key);
 	
-	@SuppressWarnings("rawtypes")
-	Object load(Class entityClass, Serializable key);
-	
-	@SuppressWarnings("rawtypes")
-	List loadAll(Class entityClass);
+	<E> List<E> findAll(Class<E> entityClass);
 
 	void update(Object entity);
 
 	void delete(Object entity);
 	
-	@SuppressWarnings("rawtypes")
-	void deleteAll(Collection entities);
+	void deleteAll(Collection<?> entities);
 }
