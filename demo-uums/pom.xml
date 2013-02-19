@@ -10,10 +10,13 @@
         <java.version>6</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring.version>3.2.0.RELEASE</spring.version>
+        <!--  
         <roo.version>1.2.3.RELEASE</roo.version>
+        -->
         <hibernate.version>4.1.8.Final</hibernate.version>
         <jetty.version>6.1.24</jetty.version>
         <h2.version>1.1.116</h2.version>
+        <unitils.version>3.3</unitils.version>
     </properties>
     <repositories>
         <repository>
@@ -21,11 +24,13 @@
             <name>Spring Maven Release Repository</name>
             <url>http://maven.springframework.org/release</url>
         </repository>
+        <!-- 
 		<repository>
             <id>spring-roo-repository</id>
             <name>Spring Roo Repository</name>
             <url>http://spring-roo-repository.springsource.org/release</url>
         </repository>
+        -->
     </repositories>
     <pluginRepositories>
         <pluginRepository>
@@ -41,6 +46,25 @@
             <version>4.10</version>
             <scope>test</scope>
         </dependency>
+		<dependency>
+			<groupId>org.unitils</groupId>
+			<artifactId>unitils-dbunit</artifactId>
+			<version>${unitils.version}</version>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<artifactId>junit</artifactId>
+					<groupId>junit</groupId>
+				</exclusion>
+			</exclusions>			
+		</dependency>
+		<dependency>
+			<groupId>org.unitils</groupId>
+			<artifactId>unitils-spring</artifactId>
+			<version>${unitils.version}</version>
+			<scope>test</scope>
+		</dependency>        
+
 		<dependency>
             <groupId>org.hsqldb</groupId>
             <artifactId>hsqldb</artifactId>
@@ -138,12 +162,14 @@
 		<!-- /spring -->
 		        
 		<!-- spring roo -->
+		<!-- 
 		<dependency>
             <groupId>org.springframework.roo</groupId>
             <artifactId>org.springframework.roo.annotations</artifactId>
             <version>${roo.version}</version>
             <scope>provided</scope>
         </dependency>
+		-->
 		<!-- /spring roo -->
         
 		<!-- hibernate -->
