@@ -26,5 +26,9 @@ public interface GenericDAO {
 
 	boolean delete(Object entity);
 	
+	<E> boolean delete(Class<E> entityClass, Serializable key);
+	
 	boolean deleteAll(Collection<?> entities);
+	
+	<E> boolean deleteAll(Class<E> entityClass, List<Serializable> key);
 }

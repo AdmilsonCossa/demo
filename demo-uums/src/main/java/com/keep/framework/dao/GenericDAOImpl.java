@@ -75,10 +75,26 @@ public class GenericDAOImpl implements GenericDAO {
 		return true;
 	}
 
+	//TODO 批量删除
 	@Override
 	public boolean deleteAll(Collection<?> entities) {
 		for (Object entity : entities) {
 			delete(entity);
+		}
+		return true;
+	}
+
+	@Override
+	public <E> boolean delete(Class<E> entityClass, Serializable key) {
+		sessionFactory.getCurrentSession().createQuery("delete from " + entityClass.getName() + " t where t.id = :id").executeUpdate();
+		return false;
+	}
+
+	//TODO 批量删除
+	@Override
+	public <E> boolean deleteAll(Class<E> entityClass, List<Serializable> keys) {
+		for (Serializable key : keys) {
+			delete(entityClass, key);
 		}
 		return true;
 	}
