@@ -7,7 +7,7 @@
     <version>0.1.0.BUILD-SNAPSHOT</version>
     <name>uums</name>
     <properties>
-        <java.version>6</java.version>
+        <java.version>1.6</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring.version>3.2.0.RELEASE</spring.version>
         <!--  
@@ -16,7 +16,6 @@
         <hibernate.version>4.1.8.Final</hibernate.version>
         <jetty.version>6.1.24</jetty.version>
         <h2.version>1.1.116</h2.version>
-        <unitils.version>3.3</unitils.version>
     </properties>
     <repositories>
         <repository>
@@ -46,24 +45,6 @@
             <version>4.10</version>
             <scope>test</scope>
         </dependency>
-		<dependency>
-			<groupId>org.unitils</groupId>
-			<artifactId>unitils-dbunit</artifactId>
-			<version>${unitils.version}</version>
-			<scope>test</scope>
-			<exclusions>
-				<exclusion>
-					<artifactId>junit</artifactId>
-					<groupId>junit</groupId>
-				</exclusion>
-			</exclusions>			
-		</dependency>
-		<dependency>
-			<groupId>org.unitils</groupId>
-			<artifactId>unitils-spring</artifactId>
-			<version>${unitils.version}</version>
-			<scope>test</scope>
-		</dependency>        
 
 		<dependency>
             <groupId>org.hsqldb</groupId>
@@ -154,11 +135,18 @@
             <artifactId>spring-webmvc</artifactId>
             <version>${spring.version}</version>
         </dependency>
+        <dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring.version}</version>
+			<scope>test</scope>
+		</dependency>
 		<dependency>
             <groupId>org.springframework.webflow</groupId>
             <artifactId>spring-js-resources</artifactId>
             <version>2.2.1.RELEASE</version>
         </dependency>
+            
 		<!-- /spring -->
 		        
 		<!-- spring roo -->

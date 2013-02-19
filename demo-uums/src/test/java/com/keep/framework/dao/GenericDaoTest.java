@@ -3,18 +3,18 @@ package com.keep.framework.dao;
 import junit.framework.Assert;
 
 import org.junit.Test;
-import org.unitils.UnitilsJUnit4;
-import org.unitils.spring.annotation.SpringApplicationContext;
-import org.unitils.spring.annotation.SpringBeanByType;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-@SpringApplicationContext({
-		"classpath*:META-INF/spring/applicationContext-datasource.xml",
-		"classpath*:META-INF/spring/applicationContext-dao.xml",
-		"classpath*:spring/test-datasource.xml"})
-public class GenericDaoTest extends UnitilsJUnit4 {
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = "classpath*:META-INF/spring/applicationContext.xml")
+public class GenericDaoTest extends AbstractJUnit4SpringContextTests {
 
-	@SpringBeanByType
-	private GenericDAO dao;
+	@Autowired
+	private GenericDAO genericDAO;
 	
 	@Test
 	public void testGet() {

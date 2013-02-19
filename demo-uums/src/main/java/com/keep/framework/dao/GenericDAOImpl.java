@@ -16,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Transactional
 @Repository
-@Scope("prototype")
+//@Scope("prototype")
 public class GenericDAOImpl implements GenericDAO {
 	
 	private Logger log = Logger.getLogger(GenericDAOImpl.class);
