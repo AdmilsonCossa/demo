@@ -15,6 +15,44 @@
 	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />  
 
 	<context:annotation-config />
-   
+	
+   	<tx:annotation-driven transaction-manager="transactionManager"/>
+	
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+	    <property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
     <import resource="classpath*:META-INF/spring/applicationContext-*.xml" />  
+    
+    <!-- jbpm3 -->
+	<bean id="jbpmSpringHelper" class="org.jbpm.pvm.internal.processengine.SpringHelper">
+		<property name="jbpmCfg" value="jbpm.cfg.xml"></property>
+	</bean>
+
+	<bean id="jbpmProcessEngine" factory-bean="jbpmSpringHelper"
+		factory-method="createProcessEngine" />
+
+	<bean id="jbpmExecutionService" factory-bean="jbpmProcessEngine"
+		factory-method="getExecutionService">
+	</bean>
+
+	<bean id="jbpmRepositoryService" factory-bean="jbpmProcessEngine"
+		factory-method="getRepositoryService">
+	</bean>
+
+	<bean id="jbpmTaskService" factory-bean="jbpmProcessEngine"
+		factory-method="getTaskService">
+	</bean>
+
+	<bean id="jbpmHistoryService" factory-bean="jbpmProcessEngine"
+		factory-method="getHistoryService">
+	</bean>
+
+	<bean id="jbpmIdentityService" factory-bean="jbpmProcessEngine"
+		factory-method="getIdentityService">
+	</bean>
+
+	<bean id="jbpmManagementService" factory-bean="jbpmProcessEngine"
+		factory-method="getManagementService">
+	</bean>
 </beans>
