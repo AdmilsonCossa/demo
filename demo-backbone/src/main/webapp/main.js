@@ -1,5 +1,5 @@
-define(['App' ], function(App) {
-	var app = new App;
+define(['app' ], function(App) {
+	var router = new App.router;
     Backbone.history.start();  
-	return app;
+	return App;
 });
