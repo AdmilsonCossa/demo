@@ -1,0 +1,69 @@
+07-25 15:22:12 jdbc[7]: exception
+org.h2.jdbc.JdbcSQLException: Timeout trying to lock table "PRODUCT"; SQL statement:
+select product0_.id as id0_0_, product0_.name as name0_0_, product0_.brand as brand0_0_ from PUBLIC.product product0_ where product0_.id=? [50200-172]
+07-25 15:22:12 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Timeout trying to lock table "PRODUCT"; SQL statement:
+select product0_.id as id0_0_, product0_.name as name0_0_, product0_.brand as brand0_0_ from PUBLIC.product product0_ where product0_.id=? [50200-172]
+07-25 15:22:12 jdbc[8]: exception
+org.h2.jdbc.JdbcSQLException: Timeout trying to lock table "PRODUCT"; SQL statement:
+select product0_.id as id0_0_, product0_.name as name0_0_, product0_.brand as brand0_0_ from PUBLIC.product product0_ where product0_.id=? [50200-172]
+07-25 15:22:12 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLException: Timeout trying to lock table "PRODUCT"; SQL statement:
+select product0_.id as id0_0_, product0_.name as name0_0_, product0_.brand as brand0_0_ from PUBLIC.product product0_ where product0_.id=? [50200-172]
+07-25 15:22:12 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Timeout trying to lock table "PRODUCT"; SQL statement:
+select product0_.id as id0_0_, product0_.name as name0_0_, product0_.brand as brand0_0_ from PUBLIC.product product0_ where product0_.id=? [50200-172]
+07-25 15:22:12 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLException: Timeout trying to lock table "PRODUCT"; SQL statement:
+select product0_.id as id0_0_, product0_.name as name0_0_, product0_.brand as brand0_0_ from PUBLIC.product product0_ where product0_.id=? [50200-172]
+07-25 15:22:12 jdbc[10]: exception
+org.h2.jdbc.JdbcSQLException: Timeout trying to lock table "PRODUCT"; SQL statement:
+select product0_.id as id0_0_, product0_.name as name0_0_, product0_.brand as brand0_0_ from PUBLIC.product product0_ where product0_.id=? [50200-172]
+07-25 15:22:12 jdbc[9]: exception
+org.h2.jdbc.JdbcSQLException: Timeout trying to lock table "PRODUCT"; SQL statement:
+select product0_.id as id0_0_, product0_.name as name0_0_, product0_.brand as brand0_0_ from PUBLIC.product product0_ where product0_.id=? [50200-172]
+07-25 15:22:12 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Timeout trying to lock table "PRODUCT"; SQL statement:
+select product0_.id as id0_0_, product0_.name as name0_0_, product0_.brand as brand0_0_ from PUBLIC.product product0_ where product0_.id=? [50200-172]
+07-25 15:22:12 jdbc[12]: exception
+org.h2.jdbc.JdbcSQLException: Timeout trying to lock table "PRODUCT"; SQL statement:
+select product0_.id as id0_0_, product0_.name as name0_0_, product0_.brand as brand0_0_ from PUBLIC.product product0_ where product0_.id=? [50200-172]
+07-25 15:22:12 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLException: Timeout trying to lock table "PRODUCT"; SQL statement:
+select product0_.id as id0_0_, product0_.name as name0_0_, product0_.brand as brand0_0_ from PUBLIC.product product0_ where product0_.id=? [50200-172]
+07-25 15:30:49 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLException: Timeout trying to lock table "PRODUCT"; SQL statement:
+select product0_.id as id0_0_, product0_.name as name0_0_, product0_.brand as brand0_0_ from PUBLIC.product product0_ where product0_.id=? [50200-172]
+07-25 15:30:49 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLException: Timeout trying to lock table "PRODUCT"; SQL statement:
+select product0_.id as id0_0_, product0_.name as name0_0_, product0_.brand as brand0_0_ from PUBLIC.product product0_ where product0_.id=? [50200-172]
+07-25 15:30:49 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Timeout trying to lock table "PRODUCT"; SQL statement:
+select product0_.id as id0_0_, product0_.name as name0_0_, product0_.brand as brand0_0_ from PUBLIC.product product0_ where product0_.id=? [50200-172]
+07-25 15:30:49 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Timeout trying to lock table "PRODUCT"; SQL statement:
+select product0_.id as id0_0_, product0_.name as name0_0_, product0_.brand as brand0_0_ from PUBLIC.product product0_ where product0_.id=? [50200-172]
+07-25 16:00:12 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Timeout trying to lock table "PRODUCT"; SQL statement:
+select product0_.id as id0_0_, product0_.version as version0_0_, product0_.name as name0_0_, product0_.brand as brand0_0_ from PUBLIC.product product0_ where product0_.id=? [50200-172]
+07-25 16:01:16 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Timeout trying to lock table "PRODUCT"; SQL statement:
+select product0_.id as id0_0_, product0_.version as version0_0_, product0_.name as name0_0_, product0_.brand as brand0_0_ from PUBLIC.product product0_ where product0_.id=? [50200-172]
+07-25 16:02:58 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Timeout trying to lock table "PRODUCT"; SQL statement:
+select product0_.id as id0_0_, product0_.version as version0_0_, product0_.name as name0_0_, product0_.brand as brand0_0_ from PUBLIC.product product0_ where product0_.id=? [50200-172]
+07-25 16:05:11 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Timeout trying to lock table "PRODUCT"; SQL statement:
+select product0_.id as id0_, product0_.version as version0_, product0_.name as name0_, product0_.brand as brand0_ from PUBLIC.product product0_ [50200-172]
+07-25 16:05:37 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Timeout trying to lock table "PRODUCT"; SQL statement:
+select product0_.id as id0_, product0_.version as version0_, product0_.name as name0_, product0_.brand as brand0_ from PUBLIC.product product0_ [50200-172]
+07-25 16:06:40 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Timeout trying to lock table "PRODUCT"; SQL statement:
+select product0_.id as id0_, product0_.version as version0_, product0_.name as name0_, product0_.brand as brand0_ from PUBLIC.product product0_ [50200-172]
+07-25 16:20:34 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Timeout trying to lock table "PRODUCT"; SQL statement:
+delete from PUBLIC.product [50200-172]
+07-25 16:24:49 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Timeout trying to lock table "PRODUCT"; SQL statement:
+delete from PUBLIC.product [50200-172]

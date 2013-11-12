@@ -75,6 +75,20 @@
                   <artifactId>org.apache.felix.bundlerepository</artifactId>
                   <version>${felix.bundlerepository.version}</version>
                 </artifactItem>
+                <!-- 添加 org.apache.felix.http.bundle -->
+                <artifactItem>
+                  <groupId>org.apache.felix</groupId>
+                  <artifactId>org.apache.felix.http.bundle</artifactId>
+                  <version>2.2.1</version>
+                </artifactItem>                                
+                <!-- 添加 org.apache.felix.webconsole -->
+                <!--
+                <artifactItem>
+                  <groupId>org.apache.felix</groupId>
+                  <artifactId>org.apache.felix.webconsole</artifactId>
+                  <version>4.2.0</version>
+                </artifactItem>                                
+                -->
                 
                 <!-- 添加 org.osgi.compendium -->
                 <artifactItem>
